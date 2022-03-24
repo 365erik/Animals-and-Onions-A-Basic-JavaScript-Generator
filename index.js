@@ -37,14 +37,16 @@ const animal = () => {
 
 const onion = () => {
   let o = randomAnimalGenerator.next();
+  let list = [];
   
   while (!o.done) {
     if (o.value === "🧅") {
-      return "🧅🧅🧅🧅 Onions!!!!";
+      list = [...list, "🧅🧅🧅🧅 Onions!!!!"];
+      return list.join(", ");
     }
-    console.log(o.value);
+    list = [...list, o.value];
     o = randomAnimalGenerator.next();
   }
 
-  return `You're out of animals (and onions).`;
+  return (list.length) ? list.join(", ") : `You're out of animals (and onions).`;
 };
