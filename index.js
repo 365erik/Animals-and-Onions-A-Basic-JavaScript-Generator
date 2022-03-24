@@ -15,6 +15,7 @@ function* randomAnimalGenerator() {
     "whale",
     "crab",
   ];
+  
   while (animals.length) {
     const i = Math.floor(Math.random() * animals.length);
     yield animals[i];
@@ -49,3 +50,4 @@ const onion = () => {
 
   return resetInstructions;
 };
+
