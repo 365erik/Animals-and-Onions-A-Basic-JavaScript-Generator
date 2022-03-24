@@ -1,4 +1,4 @@
-function* randomAnimalGenerator() {
+function* randomAnimalGeneratorFunc() {
   let animals = [
     "🧅",
     "cat",
@@ -23,31 +23,28 @@ function* randomAnimalGenerator() {
   }
 }
 
-const getAnimal = randomAnimalGenerator();
-
-const resetInstructions = `All out of animals! Reload the script to reset the demo.`;
-
-const ohNoOnions = `OH, NO!!! 🧅🧅🧅🧅🧅🧅 ONIONS!!!'`;
+const randomAnimalGenerator = randomAnimalGeneratorFunc();
 
 const animal = () => {
-  const a = getAnimal.next();
+  const a = randomAnimalGenerator.next();
+  
   if (!a.done) {
     return a.value === "🧅" ? "🧅🧅🧅🧅 Onions!!!!" : a.value;
   }
 
-  return resetInstructions;
+  return `You're out of animals (and onions).`;
 };
 
 const onion = () => {
-  let o = getAnimal.next();
+  let o = randomAnimalGenerator.next();
+  
   while (!o.done) {
     if (o.value === "🧅") {
       return "🧅🧅🧅🧅 Onions!!!!";
     }
     console.log(o.value);
-    o = getAnimal.next();
+    o = randomAnimalGenerator.next();
   }
 
-  return resetInstructions;
+  return `You're out of animals (and onions).`;
 };
-
